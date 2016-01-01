@@ -3,12 +3,29 @@ cormorant
 
 Visualise linked data for people, products and places.  We believe in an open Internet of Things.
 
+
+Hello cormorant
+---------------
+
+```javascript
+angular.module('appName', [ 'reelyactive.cormorant' ])
+
+  .controller('LinkedDataCtrl', function($scope, cormorant) {
+    cormorant.getStory('http://reelyactive.com', function(story) {
+      console.log(story);
+    });
+  });
+```
+
+Include the above in a .js file, and then source both that file and cormorant.js in an HTML file.  Upon running the HTML file, the JSON-LD embedded in reelyactive.com will be output to the console.
+
+
 License
 -------
 
 MIT License
 
-Copyright (c) 2015 reelyActive
+Copyright (c) 2016 reelyActive
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
