@@ -1,7 +1,7 @@
 cormorant
 =========
 
-Visualise linked data for people, products and places.  We believe in an open Internet of Things.
+Fetch JSON from a URL, regardless if the GET returns JSON or HTML.  In the case of the latter, JSON-LD will be extracted, if present.  We believe in an open Internet of Things.
 
 
 Hello cormorant
@@ -18,6 +18,13 @@ angular.module('appName', [ 'reelyactive.cormorant' ])
 ```
 
 Include the above in a .js file, and then source both that file and cormorant.js in an HTML file.  Upon running the HTML file, the JSON-LD embedded in reelyactive.com will be output to the console.
+
+
+What's next?
+------------
+
+In future, cormorant will recursively fetch JSON from URLs contained in the preceding fetch.  If you're developing with cormorant, check out:
+- our [angular-style-guide](https://github.com/reelyactive/angular-style-guide) for development
 
 
 License
