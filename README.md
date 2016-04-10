@@ -1,7 +1,19 @@
 cormorant
 =========
 
-Fetch JSON from a URL, regardless if the GET returns JSON or HTML.  In the case of the latter, JSON-LD will be extracted, if present.  We believe in an open Internet of Things.
+Fetch JSON from a URL, regardless if the GET returns JSON or HTML.  In the case of the latter, [JSON-LD](http://json-ld.org/) will be extracted, if present.  We believe in an open Internet of Things.
+
+
+In the scheme of Things (pun intended)
+--------------------------------------
+
+The [beaver.js](https://github.com/reelyactive/beaver), cormorant.js and [cuttlefish.js](https://github.com/reelyactive/cuttlefish) modules work together as a unit.  See our [dashboard-template-angular](https://github.com/reelyactive/dashboard-template-angular) for a minimal implementation.
+
+
+What's in a name?
+-----------------
+
+Coming soon...
 
 
 Hello cormorant
@@ -9,6 +21,8 @@ Hello cormorant
 
 ```javascript
 angular.module('appName', [ 'reelyactive.cormorant' ])
+
+  $scope.stories = cormorant.getStories();
 
   .controller('LinkedDataCtrl', function($scope, cormorant) {
     cormorant.getStory('http://reelyactive.com', function(story) {
