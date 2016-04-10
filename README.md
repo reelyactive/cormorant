@@ -7,7 +7,7 @@ Fetch JSON from a URL, regardless if the GET returns JSON or HTML.  In the case 
 In the scheme of Things (pun intended)
 --------------------------------------
 
-The [beaver.js](https://github.com/reelyactive/beaver), cormorant.js and [cuttlefish.js](https://github.com/reelyactive/cuttlefish) modules work together as a unit.  See our [dashboard-template-angular](https://github.com/reelyactive/dashboard-template-angular) for a minimal implementation.
+The [beaver.js](https://github.com/reelyactive/beaver), __cormorant.js__ and [cuttlefish.js](https://github.com/reelyactive/cuttlefish) modules work together as a unit.  See our [dashboard-template-angular](https://github.com/reelyactive/dashboard-template-angular) for a minimal implementation.
 
 
 What's in a name?
@@ -22,9 +22,10 @@ Hello cormorant
 ```javascript
 angular.module('appName', [ 'reelyactive.cormorant' ])
 
-  $scope.stories = cormorant.getStories();
-
   .controller('LinkedDataCtrl', function($scope, cormorant) {
+
+    $scope.stories = cormorant.getStories();
+
     cormorant.getStory('http://reelyactive.com', function(story) {
       console.log(story);
     });
