@@ -1,14 +1,52 @@
 cormorant
 =========
 
-Visualise linked data for people, products and places.  We believe in an open Internet of Things.
+Fetch JSON from a URL, regardless if the GET returns JSON or HTML.  In the case of the latter, [JSON-LD](http://json-ld.org/) will be extracted, if present.  We believe in an open Internet of Things.
+
+
+In the scheme of Things (pun intended)
+--------------------------------------
+
+The [beaver.js](https://github.com/reelyactive/beaver), cormorant.js and [cuttlefish.js](https://github.com/reelyactive/cuttlefish) modules work together as a unit.  See our [dashboard-template-angular](https://github.com/reelyactive/dashboard-template-angular) for a minimal implementation.
+
+
+What's in a name?
+-----------------
+
+Coming soon...
+
+
+Hello cormorant
+---------------
+
+```javascript
+angular.module('appName', [ 'reelyactive.cormorant' ])
+
+  $scope.stories = cormorant.getStories();
+
+  .controller('LinkedDataCtrl', function($scope, cormorant) {
+    cormorant.getStory('http://reelyactive.com', function(story) {
+      console.log(story);
+    });
+  });
+```
+
+Include the above in a .js file, and then source both that file and cormorant.js in an HTML file.  Upon running the HTML file, the JSON-LD embedded in reelyactive.com will be output to the console.
+
+
+What's next?
+------------
+
+In future, cormorant will recursively fetch JSON from URLs contained in the preceding fetch.  If you're developing with cormorant, check out:
+- our [angular-style-guide](https://github.com/reelyactive/angular-style-guide) for development
+
 
 License
 -------
 
 MIT License
 
-Copyright (c) 2015 reelyActive
+Copyright (c) 2016 reelyActive
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
