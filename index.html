@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> reelyActive cormorant.js demo </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="js/cormorant.js"></script>
+    <script type="text/javascript" src="js/dashboard.js"></script>
+  </head>
+  <body ng-app="dashboard">
+	  <div ng-controller="DashCtrl">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle"
+                  ng-init="navCollapsed = true"
+                  ng-click="navCollapsed = !navCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://context.reelyactive.com">
+            <strong>reely</strong>Active
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'"
+             ng-click="navCollapsed = true">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href> cormorant.js demo </a></li>
+          </ul>
+        </div>
+      </nav>
+      <!----- BEGIN CONTENT SECTION ----------------------------------------->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4">
+            <table class="table table-hover">
+              <caption> URL TO FETCH </caption>
+            </table>
+            <form class="form-inline">
+              <div class="form-group">
+                <label for="url">URL</label>
+                <input type="url" class="form-control" id="url" ng-model="url"
+                       placeholder="http://reelyactive.com">
+              </div>
+              <button type="submit" class="btn btn-default" ng-click="fetchStory(url)">Fetch</button>
+            </form>            
+          </div>
+          <div class="col-md-8">
+            <!----- STORIES ------------------------------------------------->
+            <!-- You have access to a variable called stories which has    -->
+            <!-- URLs as properties.  The URLs are associated with         -->
+            <!-- devices.  The JSON fetched from the URL is included.      -->
+            <!--------------------------------------------------------------->
+            <table class="table table-hover">
+              <caption> CORRESPONDING STORY </caption>
+            </table>
+            <pre> {{fetchedStory}} </pre>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6 well well-lg">
+            <p class="text-center">Source code is available <a href="https://github.com/reelyactive/cormorant/tree/gh-pages" target="_blank">here</a>, documentation and latest cormorant.js <a href="https://github.com/reelyactive/cormorant" target="_blank">here</a>.</p>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
+      <!----- END CONTENT SECTION ----------------------------------------->
+      <footer class="footer">
+        <a href="https://github.com/reelyactive/cormorant">
+          cormorant.js
+        </a>
+        &nbsp; | &nbsp;
+        <a href="http://context.reelyactive.com"
+           tooltip="We believe in an open Internet of Things"
+           tooltip-placement="right">
+          &copy; reelyActive 2016
+        </a>
+      </footer>
+    </div>
+  </body>
+</html>

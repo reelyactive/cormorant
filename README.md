@@ -1,45 +1,7 @@
 cormorant
 =========
 
-Fetch JSON from a URL, regardless if the GET returns JSON or HTML.  In the case of the latter, [JSON-LD](http://json-ld.org/) will be extracted, if present.  We believe in an open Internet of Things.
-
-
-In the scheme of Things (pun intended)
---------------------------------------
-
-The [beaver.js](https://github.com/reelyactive/beaver), __cormorant.js__ and [cuttlefish.js](https://github.com/reelyactive/cuttlefish) modules work together as a unit.  See our [dashboard-template-angular](https://github.com/reelyactive/dashboard-template-angular) for a minimal implementation.
-
-
-What's in a name?
------------------
-
-Coming soon...
-
-
-Hello cormorant
----------------
-
-```javascript
-angular.module('appName', [ 'reelyactive.cormorant' ])
-
-  .controller('LinkedDataCtrl', function($scope, cormorant) {
-
-    $scope.stories = cormorant.getStories();
-
-    cormorant.getStory('http://reelyactive.com', function(story) {
-      console.log(story);
-    });
-  });
-```
-
-Include the above in a .js file, and then source both that file and cormorant.js in an HTML file.  Upon running the HTML file, the JSON-LD embedded in reelyactive.com will be output to the console.
-
-
-What's next?
-------------
-
-In future, cormorant will recursively fetch JSON from URLs contained in the preceding fetch.  If you're developing with cormorant, check out:
-- our [angular-style-guide](https://github.com/reelyactive/angular-style-guide) for development
+Fetch JSON from a URL, regardless if the GET returns JSON or HTML.  In the case of the latter, [JSON-LD](http://json-ld.org/) will be extracted, if present.  See it live at [reelyactive.github.io/cormorant](http://reelyactive.github.io/cormorant/).
 
 
 License
