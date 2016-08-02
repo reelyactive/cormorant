@@ -10,10 +10,15 @@ In the scheme of Things (pun intended)
 The [beaver.js](https://github.com/reelyactive/beaver), __cormorant.js__ and [cuttlefish.js](https://github.com/reelyactive/cuttlefish) modules work together as a unit.  See our [dashboard-template-angular](https://github.com/reelyactive/dashboard-template-angular) for a minimal implementation.
 
 
+![cormorant logo](http://reelyactive.github.io/cormorant/images/cormorant-bubble.png)
+
+
 What's in a name?
 -----------------
 
-Coming soon...
+Cormorants are a family of aquatic birds well adapted for diving to catch fish in their long, slender bill which is hooked in an _Angular_ kind of way.  In its client-side habitat, cormorant.js will commonly dive into pools created by [beaver.js](https://github.com/reelyactive/cormorant) in search of linked data, adeptly swimming from URL to URL, to collect its prey: JSON-LD.
+
+Cormorants are also known as shags.  If you’ve read our other mascot stories, at this point you may be surprised that we didn’t play on the shag & beaver theme.  We could have, but it seems rather tame once you discover the mechanics of how that goes down for our other mascot, the [cuttlefish](https://github.com/reelyactive/cuttlefish)!
 
 
 Hello cormorant
