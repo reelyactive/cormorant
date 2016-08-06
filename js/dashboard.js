@@ -17,20 +17,28 @@ angular.module('dashboard', ['reelyactive.cormorant'])
  * DashCtrl Controller
  * Handles the manipulation of all variables accessed by the HTML view.
  */
-.controller('DashCtrl', function($scope, cormorant) {
+.controller('DashCtrl', function($scope, $window, cormorant) {
 
   // Variables accessible in the HTML scope
   $scope.stories = cormorant.getStories();
   $scope.fetchedStory = 'Enter a URL from which to fetch';
+  $scope.url = null;
+
+  // Extract the query URL from the location, if applicable
+  var url = $window.location.search.split("url=").pop().split('&').shift();
+  var hasUrl = $window.location.search.indexOf("url=") != -1;
+  if(hasUrl) {
+    $scope.url = url;
+  }
 
   // Fetch the story
   $scope.fetchStory = function(url) {
-    cormorant.getStory(url, function(story) {
+    cormorant.getStory(url, function(story, url) {
       if(story) {
         $scope.fetchedStory = JSON.stringify(story, null, "  ");
       }
       else {
-        $scope.fetchedStory = 'No JSON-LD found at the fetched URL';
+        $scope.fetchedStory = 'No JSON-LD found at ' + url;
       }
     });
   }
