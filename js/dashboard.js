@@ -24,13 +24,6 @@ angular.module('dashboard', ['reelyactive.cormorant'])
   $scope.fetchedStory = 'Enter a URL from which to fetch';
   $scope.url = null;
 
-  // Extract the query URL from the location, if applicable
-  var url = $window.location.search.split("url=").pop().split('&').shift();
-  var hasUrl = $window.location.search.indexOf("url=") != -1;
-  if(hasUrl) {
-    $scope.url = url;
-  }
-
   // Fetch the story
   $scope.fetchStory = function(url) {
     cormorant.getStory(url, function(story, url) {
@@ -42,4 +35,13 @@ angular.module('dashboard', ['reelyactive.cormorant'])
       }
     });
   }
+
+  // Extract the query URL from the location, if applicable
+  var url = $window.location.search.split("url=").pop().split('&').shift();
+  var hasUrl = $window.location.search.indexOf("url=") != -1;
+  if(hasUrl) {
+    $scope.url = url;
+    $scope.fetchStory(url);
+  }
+
 });
