@@ -36,6 +36,18 @@ angular.module('dashboard', ['reelyactive.cormorant'])
     });
   }
 
+  // Fetch the combined story
+  $scope.fetchCombinedStory = function(url1, url2) {
+    cormorant.getCombinedStory(url1, url2, function(story, url) {
+      if(story) {
+        $scope.fetchedStory = JSON.stringify(story, null, "  ");
+      }
+      else {
+        $scope.fetchedStory = 'No JSON-LD found at ' + url;
+      }
+    });
+  }
+
   // Extract the query URL from the location, if applicable
   var url = $window.location.search.split("url=").pop().split('&').shift();
   var hasUrl = $window.location.search.indexOf("url=") != -1;

@@ -48,7 +48,27 @@
                        size="42">
               </div>
               <button type="submit" class="btn btn-default" ng-click="fetchStory(url)">Fetch</button>
-            </form>            
+            </form>
+            <p> &nbsp; </p> 
+            <table class="table table-hover">
+              <caption> URLS TO FETCH </caption>
+            </table>
+            <form class="form-inline">
+              <div class="form-group">
+                <label for="url1">URL1</label>
+                <input type="url1" class="form-control" id="url1"
+                       ng-model="url1" placeholder="http://sniffypedia.org/Product/reelyActive_RA-R436/"
+                       size="42">
+              </div>
+              <div class="form-group">
+                <label for="url2">URL2</label>
+                <input type="url2" class="form-control" id="url2"
+                       ng-model="url2" placeholder="http://maison-notman-house.github.io/notman-reelyactive-dashboard/places/cafe.html"
+                       size="42">
+              </div>
+              <button type="submit" class="btn btn-default" ng-click="fetchCombinedStory(url1, url2)">Fetch Combined</button>
+            </form> 
+            <p> &nbsp; </p>           
           </div>
           <div class="col-md-7">
             <!----- STORIES ------------------------------------------------->
