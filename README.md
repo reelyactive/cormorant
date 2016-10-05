@@ -29,9 +29,16 @@ angular.module('appName', [ 'reelyactive.cormorant' ])
 
   .controller('LinkedDataCtrl', function($scope, cormorant) {
 
+    var url1 = 'http://reelyactive.com';
+    var url2 = 'http://reelyactive.com/places/wework-pvm/';
+
     $scope.stories = cormorant.getStories();
 
-    cormorant.getStory('http://reelyactive.com', function(story) {
+    cormorant.getStory(url1, function(story, url) {
+      console.log(story);
+    });
+
+    cormorant.getCombinedStory(url1, url2, function(story, url) {
       console.log(story);
     });
   });
