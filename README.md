@@ -38,7 +38,7 @@ angular.module('appName', [ 'reelyactive.cormorant' ])
       console.log(story);
     });
 
-    cormorant.getCombinedStory(url1, url2, function(story, url) {
+    cormorant.getCombinedStory(url1, url2, null, function(story, id) {
       console.log(story);
     });
   });
