@@ -38,12 +38,12 @@ angular.module('dashboard', ['reelyactive.cormorant'])
 
   // Fetch the combined story
   $scope.fetchCombinedStory = function(url1, url2) {
-    cormorant.getCombinedStory(url1, url2, function(story, url) {
+    cormorant.getCombinedStory(url1, url2, null, function(story, id) {
       if(story) {
         $scope.fetchedStory = JSON.stringify(story, null, "  ");
       }
       else {
-        $scope.fetchedStory = 'No JSON-LD found at ' + url;
+        $scope.fetchedStory = 'No JSON-LD found at URL(s)';
       }
     });
   }
