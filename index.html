@@ -3,10 +3,11 @@
   <head>
     <title> reelyActive cormorant.js demo </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style/main.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
+    <meta name="description" content="Demo of cormorant.js which fetches JSON from URLs, even extracting JSON-LD from HTML, if present.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style/reelyactive.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
     <script type="text/javascript" src="js/cormorant.js"></script>
     <script type="text/javascript" src="js/dashboard.js"></script>
   </head>
@@ -22,7 +23,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="http://context.reelyactive.com">
+          <a class="navbar-brand" href="http://www.reelyactive.com">
             <strong>reely</strong>Active
           </a>
         </div>
@@ -44,7 +45,7 @@
               <div class="form-group">
                 <label for="url">URL</label>
                 <input type="url" class="form-control" id="url" ng-model="url"
-                       placeholder="http://sniffypedia.org/Product/reelyActive_RA-R436/"
+                       placeholder="https://sniffypedia.org/Product/reelyActive_RA-R436/"
                        size="42">
               </div>
               <button type="submit" class="btn btn-default" ng-click="fetchStory(url)">Fetch</button>
@@ -57,13 +58,13 @@
               <div class="form-group">
                 <label for="url1">URL1</label>
                 <input type="url1" class="form-control" id="url1"
-                       ng-model="url1" placeholder="http://sniffypedia.org/Product/reelyActive_RA-R436/"
+                       ng-model="url1" placeholder="https://sniffypedia.org/Product/reelyActive_RA-R436/"
                        size="42">
               </div>
               <div class="form-group">
                 <label for="url2">URL2</label>
                 <input type="url2" class="form-control" id="url2"
-                       ng-model="url2" placeholder="http://maison-notman-house.github.io/notman-reelyactive-dashboard/places/cafe.html"
+                       ng-model="url2" placeholder="https://reelyactive.github.io/stories/hq/"
                        size="42">
               </div>
               <button type="submit" class="btn btn-default" ng-click="fetchCombinedStory(url1, url2)">Fetch Combined</button>
@@ -101,10 +102,10 @@
           cormorant.js
         </a>
         &nbsp; | &nbsp;
-        <a href="http://context.reelyactive.com"
-           tooltip="We believe in an open Internet of Things"
+        <a href="http://www.reelyactive.com"
+           uib-tooltip="We believe in an open Internet of Things"
            tooltip-placement="right">
-          &copy; reelyActive 2016
+          &copy; reelyActive 2016-2017
         </a>
       </footer>
     </div>
