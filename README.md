@@ -1,7 +1,7 @@
 cormorant
 =========
 
-Fetch JSON from a URL, regardless if the GET returns JSON or HTML.  In the case of the latter, [JSON-LD](http://json-ld.org/) will be extracted, if present.  See it live at [reelyactive.github.io/cormorant](http://reelyactive.github.io/cormorant/).
+Fetch JSON from a URL, regardless if the GET returns JSON or HTML.  In the case of the latter, [JSON-LD](http://json-ld.org/) will be extracted, if present.  See it live at [reelyactive.github.io/cormorant](https://reelyactive.github.io/cormorant/).
 
 
 License
@@ -9,7 +9,7 @@ License
 
 MIT License
 
-Copyright (c) 2016 reelyActive
+Copyright (c) 2016-2017 reelyActive
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
