@@ -10,7 +10,7 @@ In the scheme of Things (pun intended)
 The [beaver.js](https://github.com/reelyactive/beaver), __cormorant.js__ and [cuttlefish.js](https://github.com/reelyactive/cuttlefish) modules work together as a unit.  See our [dashboard-template-angular](https://github.com/reelyactive/dashboard-template-angular) for a minimal implementation.
 
 
-![cormorant logo](http://reelyactive.github.io/cormorant/images/cormorant-bubble.png)
+![cormorant logo](https://reelyactive.github.io/cormorant/images/cormorant-bubble.png)
 
 
 What's in a name?
@@ -29,8 +29,8 @@ angular.module('appName', [ 'reelyactive.cormorant' ])
 
   .controller('LinkedDataCtrl', function($scope, cormorant) {
 
-    var url1 = 'http://reelyactive.com';
-    var url2 = 'http://reelyactive.com/places/wework-pvm/';
+    var url1 = 'http://www.reelyactive.com';
+    var url2 = 'https://reelyactive.github.io/stories/hq/';
 
     $scope.stories = cormorant.getStories();
 
