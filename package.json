@@ -1,0 +1,26 @@
+{
+  "name": "angular-cormorant",
+  "version": "0.1.0",
+  "homepage": "https://reelyactive.github.io/cormorant/",
+  "description": "Fetch JSON from a URL, regardless if the GET returns JSON or HTML.  We believe in an open Internet of Things.",
+  "keywords": [
+    "reelyActive",
+    "JSON-LD",
+    "semantic web",
+    "angular",
+    "client-side"
+  ],
+  "main": "cormorant.js",
+  "files": [
+    "cormorant.js"
+  ],
+  "repository": {
+    "url": "https://github.com/reelyactive/cormorant",
+    "type": "git"
+  },
+  "author": "reelyActive <webdev@reelyactive.com>",
+  "contributors": [
+    { "name": "Jeffrey Dungen" }
+  ],
+  "license": "MIT"
+}
