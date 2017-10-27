@@ -1,6 +1,6 @@
 {
   "name": "angular-cormorant",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://reelyactive.github.io/cormorant/",
   "description": "Fetch JSON from a URL, regardless if the GET returns JSON or HTML.  We believe in an open Internet of Things.",
   "keywords": [
