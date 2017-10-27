@@ -77,7 +77,10 @@ angular.module('reelyactive.cormorant', [])
       }
       else if(typeof item === 'object') {
         for(property in item) {
-          if(property.substr(0, 1) !== '@') {
+          if(property === '@type') {
+            item[property] = prefix + item[property];
+          }
+          else if(property.substr(0, 1) !== '@') {
             item[prefix + property] = item[property];
             delete item[property];
             if(typeof item[prefix + property] === 'object') {
