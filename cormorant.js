@@ -40,12 +40,11 @@ angular.module('reelyactive.cormorant', [])
         return graph;
       }
 
-      if(json['@context'] === 'http://schema.org') {
+      if(isSchemaOrg(json['@context'])) {
         addSchemaPrefix = true;
       }
       else if(!(json['@context'].hasOwnProperty('schema') &&
-                ((json['@context'].schema === 'http://schema.org') ||
-                 (json['@context'].schema === 'http://schema.org/')))) {
+                isSchemaOrg(json['@context'].schema))) {
         // TODO: handle other contexts
         console.log('cormorant.js: unsupported @context', json['@context']);
         return graph;
@@ -67,6 +66,14 @@ angular.module('reelyactive.cormorant', [])
       }
 
       return graph;
+    }
+
+    function isSchemaOrg(context) {
+      if((context === 'http://schema.org') ||
+         (context === 'http://schema.org/')) {
+        return true;
+      }
+      return false;
     }
 
     function addPropertyPrefix(item, prefix) {
