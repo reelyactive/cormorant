@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+          content="reelyActive cormorant.js demo.">
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+    <link rel="stylesheet" href="style/reelyactive.css">
+    <title> reelyActive cormorant.js demo </title>
+    <!----- Structured, linked metadata (JSON-LD & Schema.org) ----->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org", 
+      "@type": "SoftwareApplication",
+      "name": "cormorant.js",
+      "description": "Client-side library to fetch associations from chickadee and to fetch JSON from a URL, regardless if the GET returns JSON or HTML.",
+      "license": "https://opensource.org/licenses/MIT",
+      "isAccessibleForFree": true,
+      "applicationCategory": "Client-side",
+      "operatingSystem": "Any",
+      "image": "https://reelyactive.github.io/cormorant/images/cormorant-bubble.png",
+      "sameAs": "https://github.com/reelyactive/cormorant",
+      "author": {
+        "@type": "Organization",
+        "url": "https://www.reelyactive.com"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-reelyactive bg-reelyactive">
+      <a class="navbar-brand" href="https://www.reelyactive.com/">
+        <img src="images/reelyactive-logo-nav.png" width="165" height="30"
+             alt="reelyActive">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+              data-target="#navbarItems" aria-controls="navbarItems"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarItems">
+        <!-- Left-aligned navigation items -->
+        <ul class="navbar-nav mr-auto"></ul>
+        <!-- Right-aligned navigation items -->
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown"
+               role="button" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">
+              <i class="fas fa-question-circle"></i>
+            </a>
+            <!-- Info about tracking and open source software/licenses -->
+            <div class="dropdown-menu dropdown-menu-right"
+                 aria-labelledby="navbarDropdown">
+              <a class="dropdown-item"
+                 href="https://www.reelyactive.com/how-we-observe/#digital">
+                <i class="fas fa-mouse-pointer"></i>
+                Behaviour tracking free &nbsp;
+                <span class="badge badge-success">
+                  <i class="fas fa-user-shield"></i>
+                </span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" target="_blank"
+                 href="https://getbootstrap.com" >
+                <i class="fab fa-bootstrap"></i>
+                Bootstrap 4 &nbsp;
+                <span class="badge badge-light">
+                  <i class="fab fa-osi"></i> MIT
+                </span>
+              </a>
+              <a class="dropdown-item" target="_blank"
+                 href="https://fontawesome.com" >
+                <i class="fab fa-font-awesome"></i>
+                Font Awesome (Free) &nbsp;
+                <span class="badge badge-light">
+                  <i class="fab fa-creative-commons"></i>
+                  <i class="fab fa-osi"></i> MIT
+                </span>
+              </a>
+              <a class="dropdown-item" target="_blank"
+                 href="https://jquery.com" >
+                <i class="fab fa-js"></i>
+                JQuery &nbsp;
+                <span class="badge badge-light">
+                  <i class="fab fa-osi"></i> MIT
+                </span>
+              </a>
+              <a class="dropdown-item" target="_blank"
+                 href="https://github.com/reelyactive/web-style-guide/" >
+                <i class="fas fa-code"></i>
+                Web Style Guide &nbsp;
+                <span class="badge badge-light">
+                  <i class="fab fa-osi"></i> MIT
+                </span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" target="_blank"
+                 href="https://www.reelyactive.com/made-in-montreal/" >
+                <i class="fab fa-canadian-maple-leaf"></i>
+                Made in Montr&eacute;al &nbsp;
+                <i class="fas fa-city"></i>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Content -->
+    <div class="container-fluid">
+      <p> &nbsp; </p>
+      <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-5">
+          <h1> cormorant.js demo </h1>
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="storytab" data-toggle="tab"
+                 href="#storycontent" role="tab" aria-controls="storycontent"
+                 aria-selected="true">
+                <i class="fas fa-file-code"></i> &nbsp; Story
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="associationstab" data-toggle="tab"
+                 href="#associationscontent" role="tab"
+                 aria-controls="associationscontent"
+                 aria-selected="false">
+                <i class="fas fa-list-alt"></i> &nbsp; Associations
+              </a>
+            </li>
+          </ul>
+          <div class="tab-content tab-content-reelyactive">
+            <!----- Story Panel ----->
+            <div class="tab-pane fade show active" id="storycontent"
+                 role="tabpanel" aria-labelledby="storytab">
+              <p class="mt-2"> Fetch the story from the given URL: </p>
+              <form class="form-inline" onsubmit="return false;">
+                <label class="sr-only" for="storyUrl"> Story URL </label>
+                <input type="url" class="form-control mb-2 mr-sm-2"
+                       placeholder="https://sniffypedia.org/Product/reelyActive_RA-R436/"
+                       id="storyUrl" size="36" required>
+                <button type="button" class="btn btn-primary mb-2"
+                       id="storyButton"> Fetch </button>
+              </form>
+            </div>
+            <!----- Associations Panel ----->
+            <div class="tab-pane fade" id="associationscontent" role="tabpanel"
+                 aria-labelledby="associationstab">
+              <p class="mt-2"> Specify the (chickadee) associations server: </p>
+              <form class="form-inline" onsubmit="return false;">
+                <label class="sr-only" for="serverUrl"> Server URL </label>
+                <input type="url" class="form-control mb-2 mr-sm-2"
+                       placeholder="http://localhost:3001"
+                       id="serverUrl" size="24" required>
+                <button type="button" class="btn btn-secondary mb-2"
+                       id="serverButton"> Update </button>
+              </form>
+              <p class="mt-2"> Fetch the associations and story for the given device identifier: </p>
+              <form class="form-inline" onsubmit="return false;">
+                <label class="sr-only" for="deviceId"> Device ID </label>
+                <input type="text" class="form-control mb-2 mr-sm-2"
+                       placeholder="001bc50940810000/1"
+                       id="deviceId" size="24" required>
+                <button type="button" class="btn btn-primary mb-2"
+                       id="deviceButton"> Fetch </button>
+              </form>
+              <h3 class="text-center mt-4" id="identifierHeader" hidden></h3>
+              <table class="table table-hover" id="associationsTable" hidden>
+                <tbody>
+                  <tr>
+                    <th> <i class="fas fa-link"></i> url </th>
+                    <td id="url"></td>
+                  </tr>
+                  <tr>
+                    <th> <i class="fas fa-tags"></i> tags </th>
+                    <td id="tags"></td>
+                  </tr>
+                  <tr>
+                    <th> <i class="fas fa-sitemap"></i> directory </th>
+                    <td id="directory"></td>
+                  </tr>
+                  <tr>
+                    <th> <i class="fas fa-map-marked-alt"></i> position </th>
+                    <td id="position"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-5">
+          <div class="card">
+            <div class="card-header"> Story </div>
+            <div class="card-body">
+              <pre id="storyJson"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <a href="https://github.com/reelyactive/cormorant"> cormorant </a>
+      &nbsp; | &nbsp;
+      <a href="https://www.reelyactive.com"> &copy; reelyActive 2016-2019 </a>
+    </footer>
+    <script defer src="js/solid.min.js"></script>
+    <script defer src="js/brands.min.js"></script>
+    <script defer src="js/fontawesome.min.js"></script>
+    <script src="js/jquery-3.4.0.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/cormorant.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
