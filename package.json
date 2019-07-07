@@ -1,24 +1,26 @@
 {
-  "name": "angular-cormorant",
-  "version": "0.2.2",
+  "name": "cormorant",
   "homepage": "https://reelyactive.github.io/cormorant/",
-  "description": "Fetch JSON from a URL, regardless if the GET returns JSON or HTML.  We believe in an open Internet of Things.",
+  "author": {
+    "name": "reelyActive",
+    "email": "info@reelyactive.com"
+  },
+  "description": "Client-side library to fetch associations from chickadee and to fetch JSON from a URL, regardless if the GET returns JSON or HTML.  We believe in an open Internet of Things.",
   "keywords": [
     "reelyActive",
     "JSON-LD",
     "semantic web",
-    "angular",
     "client-side"
   ],
-  "main": "cormorant.js",
+  "version": "1.0.0",
+  "main": "./js/cormorant.js",
   "files": [
-    "cormorant.js"
+    "./js/cormorant.js"
   ],
   "repository": {
     "url": "https://github.com/reelyactive/cormorant",
     "type": "git"
   },
-  "author": "reelyActive <webdev@reelyactive.com>",
   "contributors": [
     { "name": "Jeffrey Dungen" }
   ],

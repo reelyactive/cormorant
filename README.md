@@ -1,13 +1,23 @@
 cormorant
 =========
 
-Fetch JSON from a URL, regardless if the GET returns JSON or HTML.  In the case of the latter, [JSON-LD](http://json-ld.org/) will be extracted, if present.  We believe in an open Internet of Things.
+Client-side library to fetch associations from [chickadee](https://github.com/reelyactive/chickadee) and to fetch JSON from a URL, regardless if the GET returns JSON or HTML.  __cormorant.js__ will collect all structured, linked data about _who/what is where/how_, making this real-time information available to the web application.
 
 
-In the scheme of Things (pun intended)
---------------------------------------
+Installation
+------------
 
-The [beaver.js](https://github.com/reelyactive/beaver), __cormorant.js__ and [cuttlefish.js](https://github.com/reelyactive/cuttlefish) modules work together as a unit.  See our [dashboard-template-angular](https://github.com/reelyactive/dashboard-template-angular) for a minimal implementation.
+__cormorant.js__ is written in vanilla JavaScript and the file can simply be included among the scripts in an HTML file.  For example:
+
+```html
+<html>
+  <head></head>
+  <body>
+    <script src="js/cormorant.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
+```
 
 
 ![cormorant logo](https://reelyactive.github.io/cormorant/images/cormorant-bubble.png)
@@ -21,45 +31,12 @@ Cormorants are a family of aquatic birds well adapted for diving to catch fish i
 Cormorants are also known as shags.  If you’ve read our other mascot stories, at this point you may be surprised that we didn’t play on the shag & beaver theme.  We could have, but it seems rather tame once you discover the mechanics of how that goes down for our other mascot, the [cuttlefish](https://github.com/reelyactive/cuttlefish)!
 
 
-Hello cormorant
----------------
-
-```javascript
-angular.module('appName', [ 'reelyactive.cormorant' ])
-
-  .controller('LinkedDataCtrl', function($scope, cormorant) {
-
-    var url1 = 'http://www.reelyactive.com';
-    var url2 = 'https://reelyactive.github.io/stories/hq/';
-
-    $scope.stories = cormorant.getStories();
-
-    cormorant.getStory(url1, function(story, url) {
-      console.log(story);
-    });
-
-    cormorant.getCombinedStory(url1, url2, null, function(story, id) {
-      console.log(story);
-    });
-  });
-```
-
-Include the above in a .js file, and then source both that file and cormorant.js in an HTML file.  Upon running the HTML file, the JSON-LD embedded in reelyactive.com will be output to the console.
-
-
-What's next?
-------------
-
-In future, cormorant will recursively fetch JSON from URLs contained in the preceding fetch.  If you're developing with cormorant, check out:
-- our [angular-style-guide](https://github.com/reelyactive/angular-style-guide) for development
-
-
 License
 -------
 
 MIT License
 
-Copyright (c) 2016-2017 reelyActive
+Copyright (c) 2016-2019 [reelyActive](https://www.reelyactive.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
