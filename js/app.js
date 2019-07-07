@@ -5,7 +5,7 @@
 
 
 // Constant definitions
-const DEFAULT_SERVER_URL = 'http://localhost:3001/';
+const DEFAULT_SERVER_URL = 'http://localhost:3001';
 
 
 // DOM elements
@@ -27,6 +27,7 @@ let associationsServerUrl = DEFAULT_SERVER_URL;
 
 // Handle story button click
 storyButton.addEventListener('click', function() {
+  storyJson.textContent = '';
   if(storyUrl.value && (storyUrl.value.indexOf('http') === 0)) {
     cormorant.retrieveStory(storyUrl.value, function(story) {
       storyJson.textContent = JSON.stringify(story, null, 2);
@@ -42,6 +43,7 @@ storyButton.addEventListener('click', function() {
 // Handle server button click
 serverButton.addEventListener('click', function() {
   if(serverUrl.value && (serverUrl.value.indexOf('http') === 0)) {
+    // TODO: remove trailing slash, if any
     associationsServerUrl = serverUrl.value;
   }
   else {
@@ -56,8 +58,10 @@ deviceButton.addEventListener('click', function() {
   identifierHeader.textContent = deviceId.value;
   identifierHeader.hidden = false;
   associationsTable.hidden = true;
+  storyJson.textContent = '';
 
-  cormorant.retrieveAssociations(deviceId.value, false, function(associations) {
+  cormorant.retrieveAssociations(associationsServerUrl, deviceId.value, false,
+                                 function(associations) {
     if(associations) {
       url.textContent = associations.url || '';
       tags.textContent = associations.tags || '';
