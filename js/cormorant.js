@@ -33,6 +33,13 @@ let cormorant = (function() {
 
     try {
       json = JSON.parse(jsonString);
+
+      // Handle standard reelyActive API response case
+      if(json.hasOwnProperty('stories')) {
+        let storyId = Object.keys(json.stories)[0];
+        let story = json.stories[storyId];
+        return story;
+      }
     }
     catch(e) { }
 
