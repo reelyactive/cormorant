@@ -51,7 +51,6 @@ let cormorant = (function() {
     let httpRequest = new XMLHttpRequest();
 
     httpRequest.onreadystatechange = function() {
-console.log(httpRequest);
       if(httpRequest.readyState === XMLHttpRequest.DONE) {
         let contentType = httpRequest.getResponseHeader('Content-Type');
         return callback(httpRequest.status, httpRequest.responseText,
@@ -87,8 +86,12 @@ console.log(httpRequest);
     });
   }
 
-  // Get the associations for the given device identifier
+  // Get the story for the given URL
   function retrieveStory(storyUrl, callback) {
+    if(stories.hasOwnProperty(storyUrl)) {
+      return callback(stories[storyUrl]);
+    }
+
     retrieve(storyUrl, 'application/json, text/plain',
              function(status, responseText, contentType) {
       if(status !== STATUS_OK) {
