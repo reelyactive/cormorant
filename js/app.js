@@ -1,5 +1,5 @@
 /**
- * Copyright reelyActive 2016-2019
+ * Copyright reelyActive 2016-2020
  * We believe in an open Internet of Things
  */
 
@@ -60,23 +60,20 @@ deviceButton.addEventListener('click', function() {
   associationsTable.hidden = true;
   storyJson.textContent = '';
 
-  cormorant.retrieveAssociations(associationsServerUrl, deviceId.value, false,
-                                 function(associations) {
+  cormorant.retrieveAssociations(associationsServerUrl, deviceId.value, true,
+                                 function(associations, story) {
     if(associations) {
       url.textContent = associations.url || '';
       tags.textContent = associations.tags || '';
       directory.textContent = associations.directory || '';
       position.textContent = associations.position || '';
       associationsTable.hidden = false;
-
-      if(associations.hasOwnProperty('url')) {
-        cormorant.retrieveStory(associations.url, function(story) {
-          storyJson.textContent = JSON.stringify(story, null, 2);
-        });
-      }
     }
     else {
       // TODO: no associations found
+    }
+    if(story) {
+      storyJson.textContent = JSON.stringify(story, null, 2);
     }
   });
 });
