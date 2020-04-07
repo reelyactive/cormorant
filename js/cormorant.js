@@ -68,6 +68,8 @@ let cormorant = (function() {
     let url = serverUrl + '/associations/' + deviceId;
     retrieve(url, 'application/json', function(status, responseText) {
       let deviceAssociations = null;
+      let isStoryBeingRetrieved = false;
+
       if(status === STATUS_OK) {
         let response = JSON.parse(responseText);
         let returnedDeviceId = null;
@@ -81,8 +83,18 @@ let cormorant = (function() {
         }
         associations[deviceId] = deviceAssociations;
         associations[returnedDeviceId] = deviceAssociations;
+
+        if(isStoryToBeRetrieved && deviceAssociations.url) {
+          isStoryBeingRetrieved = true;
+          retrieveStory(deviceAssociations.url, function(story) {
+            return callback(deviceAssociations, story);
+          });
+        }
       }
-      return callback(deviceAssociations);
+
+      if(!isStoryBeingRetrieved) {
+        return callback(deviceAssociations);
+      }
     });
   }
 
