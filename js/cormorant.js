@@ -51,6 +51,7 @@ let cormorant = (function() {
     let httpRequest = new XMLHttpRequest();
 
     httpRequest.onreadystatechange = function() {
+console.log(httpRequest);
       if(httpRequest.readyState === XMLHttpRequest.DONE) {
         let contentType = httpRequest.getResponseHeader('Content-Type');
         return callback(httpRequest.status, httpRequest.responseText,
@@ -90,6 +91,10 @@ let cormorant = (function() {
   function retrieveStory(storyUrl, callback) {
     retrieve(storyUrl, 'application/json, text/plain',
              function(status, responseText, contentType) {
+      if(status !== STATUS_OK) {
+        return callback(null);
+      }
+
       let isJson = (contentType.indexOf('application/json') === 0);
       let story;
       if(isJson) {
