@@ -86,8 +86,8 @@ let cormorant = (function() {
 
         if(isStoryToBeRetrieved && deviceAssociations.url) {
           isStoryBeingRetrieved = true;
-          retrieveStory(deviceAssociations.url, function(story) {
-            return callback(deviceAssociations, story);
+          retrieveStory(deviceAssociations.url, function(story, status) {
+            return callback(deviceAssociations, story, status);
           });
         }
       }
@@ -107,7 +107,7 @@ let cormorant = (function() {
     retrieve(storyUrl, 'application/json, text/plain',
              function(status, responseText, contentType) {
       if(status !== STATUS_OK) {
-        return callback(null);
+        return callback(null, status);
       }
 
       let isJson = (contentType.indexOf('application/json') === 0);
@@ -121,7 +121,7 @@ let cormorant = (function() {
       if(story) {
         stories[storyUrl] = story;
       }
-      return callback(story);
+      return callback(story, status);
     });
   }
 
