@@ -50,7 +50,7 @@ let cormorant = (function() {
   function retrieve(url, acceptHeaders, callback) {
     let httpRequest = new XMLHttpRequest();
 
-    httpRequest.onreadystatechange = function() {
+    httpRequest.onreadystatechange = () => {
       if(httpRequest.readyState === XMLHttpRequest.DONE) {
         let contentType = httpRequest.getResponseHeader('Content-Type');
         return callback(httpRequest.status, httpRequest.responseText,
@@ -66,7 +66,7 @@ let cormorant = (function() {
   function retrieveAssociations(serverUrl, deviceId, isStoryToBeRetrieved,
                                 callback) {
     let url = serverUrl + '/associations/' + deviceId;
-    retrieve(url, 'application/json', function(status, responseText) {
+    retrieve(url, 'application/json', (status, responseText) => {
       let deviceAssociations = null;
       let isStoryBeingRetrieved = false;
 
@@ -86,7 +86,7 @@ let cormorant = (function() {
 
         if(isStoryToBeRetrieved && deviceAssociations.url) {
           isStoryBeingRetrieved = true;
-          retrieveStory(deviceAssociations.url, function(story, status) {
+          retrieveStory(deviceAssociations.url, (story, status) => {
             return callback(deviceAssociations, story, status);
           });
         }
@@ -105,7 +105,7 @@ let cormorant = (function() {
     }
 
     retrieve(storyUrl, 'application/json, text/plain',
-             function(status, responseText, contentType) {
+             (status, responseText, contentType) => {
       if(status !== STATUS_OK) {
         return callback(null, status);
       }
