@@ -11,8 +11,8 @@ let cormorant = (function() {
   const SIGNATURE_SEPARATOR = '/';
 
   // Internal variables
-  let associations = {};
-  let stories = {};
+  let associations = new Map();
+  let stories = new Map();
 
   // Extract the JSON-LD, if present, from the given HTML
   function extractFromHtml(html) {
@@ -81,8 +81,8 @@ let cormorant = (function() {
           returnedDeviceId = Object.keys(response.devices)[0];
           deviceAssociations = response.devices[returnedDeviceId];
         }
-        associations[deviceId] = deviceAssociations;
-        associations[returnedDeviceId] = deviceAssociations;
+        associations.set(deviceId, deviceAssociations);
+        associations.set(returnedDeviceId, deviceAssociations);
 
         if(isStoryToBeRetrieved && deviceAssociations.url) {
           isStoryBeingRetrieved = true;
@@ -100,8 +100,8 @@ let cormorant = (function() {
 
   // Get the story for the given URL
   function retrieveStory(storyUrl, callback) {
-    if(stories.hasOwnProperty(storyUrl)) {
-      return callback(stories[storyUrl]);
+    if(stories.has(storyUrl)) {
+      return callback(stories.get(storyUrl), undefined);
     }
 
     retrieve(storyUrl, 'application/json, text/plain',
@@ -119,7 +119,7 @@ let cormorant = (function() {
         story = extractFromHtml(responseText);
       }
       if(story) {
-        stories[storyUrl] = story;
+        stories.set(storyUrl, story);
       }
       return callback(story, status);
     });
