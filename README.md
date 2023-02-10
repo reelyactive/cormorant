@@ -56,9 +56,11 @@ Supported variables
 What's in a name?
 -----------------
 
-Cormorants are a family of aquatic birds well adapted for diving to catch fish in their long, slender bill which is hooked in an _Angular_ kind of way.  In its client-side habitat, cormorant.js will commonly dive into pools created by [beaver.js](https://github.com/reelyactive/beaver) in search of linked data, adeptly swimming from URL to URL, to collect its prey: JSON-LD.
+Cormorants are a family of aquatic birds well adapted for diving to catch fish in their long, slender bill which is hooked in an _Angular_[^1] kind of way.  In its client-side habitat, cormorant.js will commonly dive into pools created by [beaver.js](https://github.com/reelyactive/beaver) in search of linked data, adeptly swimming from URL to URL, to collect its prey: JSON-LD.
 
 Cormorants are also known as shags.  If you’ve read our other mascot stories, at this point you may be surprised that we didn’t play on the shag & beaver theme.  We could have, but it seems rather tame once you discover the mechanics of how that goes down for our other mascot, the [cuttlefish](https://github.com/reelyactive/cuttlefish)!
+
+[^1]: v0.x used Angular.js
 
 
 Project History
