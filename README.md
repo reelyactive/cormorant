@@ -26,7 +26,7 @@ Include in a _js/app.js_ the code to fetch the story from a given URL:
 ```javascript
 let url = 'https://reelyactive.github.io/cormorant/';
 
-cormorant.retrieveStory(url, (story) => {
+cormorant.retrieveStory(url, {}, (story) => {
   console.log(story); // Do something useful with the JSON-LD & Schema.org
 });
 ```
@@ -37,17 +37,50 @@ Open the _index.html_ file in a web browser for __cormorant__ to retrieve the st
 Supported functions
 -------------------
 
-`cormorant.retrieveStory(url, callback);`
+### retrieveStory
 
-`cormorant.retrieveAssociations(url, deviceId, isStoryToBeRetrieved, callback);`
+```javascript
+let url = 'https://reelyactive.github.io/cormorant/';
+let options = { isStoryToBeRefetched: false };
+
+cormorant.retrieveStory(url, options, (story, status) => {
+  // story = Object (if successfully retrieved)
+  //       = null (otherwise)
+  // status = Number (HTTP response status code)
+  //        = undefined (if story retrieved from memory)
+});
+```
+
+Set `isStoryToBeRefetched: true` to force a cache update.
+
+### retrieveAssociations
+
+```javascript
+let url = 'http://localhost:3001';
+let deviceSignature = 'bada55beac04/3';
+let options = { isStoryToBeRetrieved: false };
+
+cormorant.retrieveAssociations(url, deviceSignature, options,
+                               (deviceAssociations, story, status) => {
+  // deviceAssociations = Object (if successfully retrieved)
+  //                    = null (otherwise)
+  // story = Object (if successfully retrieved)
+  //       = null (otherwise)
+  // status = Number (HTTP response status code)
+  //        = undefined (if story retrieved from memory)
+});
+```
+
+Set `isStoryToBeRetrieved: true` to automatically attempt to retrieve the story, provided a uri is included among the associations.
 
 
 Supported variables
 -------------------
 
-`cormorant.stories`
-
-`cormorant.associations`
+| Variable                 | Type | Description     |
+|:-------------------------|:-----|:----------------|
+| `cormorant.stories`      | Map  | URL as key      |
+| `cormorant.associations` | Map  | deviceId as key |
 
 
 ![cormorant logo](https://reelyactive.github.io/cormorant/images/cormorant-bubble.png)
