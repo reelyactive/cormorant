@@ -9,11 +9,12 @@
   "keywords": [
     "reelyActive",
     "JSON-LD",
+    "linked data",
     "semantic web",
     "digital twins",
     "client-side"
   ],
-  "version": "1.0.2",
+  "version": "2.0.0",
   "main": "./js/cormorant.js",
   "files": [
     "./js/cormorant.js"
