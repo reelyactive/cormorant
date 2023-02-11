@@ -63,9 +63,10 @@ let cormorant = (function() {
   }
 
   // Get the associations for the given device identifier
-  function retrieveAssociations(serverUrl, deviceId, isStoryToBeRetrieved,
-                                callback) {
+  function retrieveAssociations(serverUrl, deviceId, options, callback) {
+    options = options || {};
     let url = serverUrl + '/associations/' + deviceId;
+
     retrieve(url, 'application/json', (status, responseText) => {
       let deviceAssociations = null;
       let isStoryBeingRetrieved = false;
@@ -84,7 +85,7 @@ let cormorant = (function() {
         associations.set(deviceId, deviceAssociations);
         associations.set(returnedDeviceId, deviceAssociations);
 
-        if(isStoryToBeRetrieved && deviceAssociations.url) {
+        if(options.isStoryToBeRetrieved && deviceAssociations.url) {
           isStoryBeingRetrieved = true;
           retrieveStory(deviceAssociations.url, (story, status) => {
             return callback(deviceAssociations, story, status);
@@ -99,8 +100,10 @@ let cormorant = (function() {
   }
 
   // Get the story for the given URL
-  function retrieveStory(storyUrl, callback) {
-    if(stories.has(storyUrl)) {
+  function retrieveStory(storyUrl, options, callback) {
+    options = options || {};
+
+    if(stories.has(storyUrl) && !options.isStoryToBeRefetched) {
       return callback(stories.get(storyUrl), undefined);
     }
 

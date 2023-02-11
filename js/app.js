@@ -22,11 +22,15 @@ storyUrl.value = DEFAULT_URL;
 storyButton.addEventListener('click', () => {
   storyJson.textContent = '';
   if(storyUrl.value && (storyUrl.value.indexOf('http') === 0)) {
-    cormorant.retrieveStory(storyUrl.value, (story, status) => {
+    cormorant.retrieveStory(storyUrl.value, {}, (story, status) => {
       storyJson.textContent = JSON.stringify(story, null, 2);
       storyStatus.textContent = status;
       if(status === HTTP_STATUS_OK) {
         storyStatus.setAttribute('class', 'text-success');
+      }
+      else if(status === undefined) {
+        storyStatus.textContent = 'n/a (cached)';
+        storyStatus.setAttribute('class', 'text-dark');
       }
       else {
         storyStatus.setAttribute('class', 'text-danger');
