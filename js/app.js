@@ -1,79 +1,44 @@
 /**
- * Copyright reelyActive 2016-2020
+ * Copyright reelyActive 2016-2023
  * We believe in an open Internet of Things
  */
 
 
 // Constant definitions
-const DEFAULT_SERVER_URL = 'http://localhost:3001';
+const DEFAULT_URL = 'https://reelyactive.github.io/cormorant/';
+const HTTP_STATUS_OK = 200;
 
 
 // DOM elements
 let storyUrl = document.querySelector('#storyUrl');
-let serverUrl = document.querySelector('#serverUrl');
-let deviceId = document.querySelector('#deviceId');
-let identifierHeader = document.querySelector('#identifierHeader');
-let associationsTable = document.querySelector('#associationsTable');
-let url = document.querySelector('#url');
-let tags = document.querySelector('#tags');
-let directory = document.querySelector('#directory');
-let position = document.querySelector('#position');
 let storyJson = document.querySelector('#storyJson');
+let storyStatus = document.querySelector('#storyStatus');
 
 
-// Variables
-let associationsServerUrl = DEFAULT_SERVER_URL;
+storyUrl.value = DEFAULT_URL;
 
 
 // Handle story button click
-storyButton.addEventListener('click', function() {
+storyButton.addEventListener('click', () => {
   storyJson.textContent = '';
   if(storyUrl.value && (storyUrl.value.indexOf('http') === 0)) {
-    cormorant.retrieveStory(storyUrl.value, function(story) {
+    cormorant.retrieveStory(storyUrl.value, {}, (story, status) => {
       storyJson.textContent = JSON.stringify(story, null, 2);
+      storyStatus.textContent = status;
+      if(status === HTTP_STATUS_OK) {
+        storyStatus.setAttribute('class', 'text-success');
+      }
+      else if(status === undefined) {
+        storyStatus.textContent = 'n/a (cached)';
+        storyStatus.setAttribute('class', 'text-dark');
+      }
+      else {
+        storyStatus.setAttribute('class', 'text-danger');
+      }
     });
   }
   else {
     storyUrl.value = null;
     storyUrl.setAttribute('placeholder', 'Enter a valid URL');
   }
-});
-
-
-// Handle server button click
-serverButton.addEventListener('click', function() {
-  if(serverUrl.value && (serverUrl.value.indexOf('http') === 0)) {
-    // TODO: remove trailing slash, if any
-    associationsServerUrl = serverUrl.value;
-  }
-  else {
-    serverUrl.value = null;
-    serverUrl.setAttribute('placeholder', 'Enter a valid URL');
-  }
-});
-
-
-// Handle device button click
-deviceButton.addEventListener('click', function() {
-  identifierHeader.textContent = deviceId.value;
-  identifierHeader.hidden = false;
-  associationsTable.hidden = true;
-  storyJson.textContent = '';
-
-  cormorant.retrieveAssociations(associationsServerUrl, deviceId.value, true,
-                                 function(associations, story) {
-    if(associations) {
-      url.textContent = associations.url || '';
-      tags.textContent = associations.tags || '';
-      directory.textContent = associations.directory || '';
-      position.textContent = associations.position || '';
-      associationsTable.hidden = false;
-    }
-    else {
-      // TODO: no associations found
-    }
-    if(story) {
-      storyJson.textContent = JSON.stringify(story, null, 2);
-    }
-  });
 });

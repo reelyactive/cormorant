@@ -5,15 +5,16 @@
     "name": "reelyActive",
     "email": "info@reelyactive.com"
   },
-  "description": "Client-side library to fetch associations from chickadee and to fetch JSON from a URL, regardless if the GET returns JSON or HTML.  We believe in an open Internet of Things.",
+  "description": "Client-side utility to fetch digital twins in the form of JSON-LD & Schema.org from any given URL.  We believe in an open Internet of Things.",
   "keywords": [
     "reelyActive",
     "JSON-LD",
+    "linked data",
     "semantic web",
     "digital twins",
     "client-side"
   ],
-  "version": "1.0.2",
+  "version": "2.0.0",
   "main": "./js/cormorant.js",
   "files": [
     "./js/cormorant.js"
