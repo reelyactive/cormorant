@@ -77,10 +77,10 @@ Set `isStoryToBeRetrieved: true` to automatically attempt to retrieve the story,
 Supported variables
 -------------------
 
-| Variable                 | Type | Description     |
-|:-------------------------|:-----|:----------------|
-| `cormorant.stories`      | Map  | URL as key      |
-| `cormorant.associations` | Map  | deviceId as key |
+| Variable                 | Type | Description            |
+|:-------------------------|:-----|:-----------------------|
+| `cormorant.stories`      | Map  | URL as key             |
+| `cormorant.associations` | Map  | deviceSignature as key |
 
 
 ![cormorant logo](https://reelyactive.github.io/cormorant/images/cormorant-bubble.png)

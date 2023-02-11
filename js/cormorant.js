@@ -62,10 +62,10 @@ let cormorant = (function() {
     httpRequest.send();
   }
 
-  // Get the associations for the given device identifier
-  function retrieveAssociations(serverUrl, deviceId, options, callback) {
+  // Get the associations for the given device signature
+  function retrieveAssociations(serverUrl, deviceSignature, options, callback) {
     options = options || {};
-    let url = serverUrl + '/associations/' + deviceId;
+    let url = serverUrl + '/associations/' + deviceSignature;
 
     retrieve(url, 'application/json', (status, responseText) => {
       let deviceAssociations = null;
@@ -75,15 +75,15 @@ let cormorant = (function() {
         let response = JSON.parse(responseText);
         let returnedDeviceId = null;
         if(response.hasOwnProperty('associations')) { // chickadee v1.x
-          returnedDeviceId = Object.keys(response.associations)[0];
-          deviceAssociations = response.associations[returnedDeviceId];
+          returnedDeviceSignature = Object.keys(response.associations)[0];
+          deviceAssociations = response.associations[returnedDeviceSignature];
         }
         else if(response.hasOwnProperty('devices')) { // chickadee v0.x
-          returnedDeviceId = Object.keys(response.devices)[0];
-          deviceAssociations = response.devices[returnedDeviceId];
+          returnedDeviceSignature = Object.keys(response.devices)[0];
+          deviceAssociations = response.devices[returnedDeviceSignature];
         }
-        associations.set(deviceId, deviceAssociations);
-        associations.set(returnedDeviceId, deviceAssociations);
+        associations.set(deviceSignature, deviceAssociations);
+        associations.set(returnedDeviceSignature, deviceAssociations);
 
         if(options.isStoryToBeRetrieved && deviceAssociations.url) {
           isStoryBeingRetrieved = true;
