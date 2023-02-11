@@ -56,7 +56,7 @@ Set `isStoryToBeRefetched: true` to force a cache update.
 ### retrieveAssociations
 
 ```javascript
-let url = 'http://localhost:3001';
+let url = 'http://pareto.local';
 let deviceSignature = 'bada55beac04/3';
 let options = { isStoryToBeRetrieved: false };
 
