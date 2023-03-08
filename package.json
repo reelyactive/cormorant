@@ -14,7 +14,7 @@
     "digital twins",
     "client-side"
   ],
-  "version": "2.0.1",
+  "version": "2.0.2",
   "main": "./js/cormorant.js",
   "files": [
     "./js/cormorant.js"
