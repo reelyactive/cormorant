@@ -6,7 +6,6 @@
 
 // Constant definitions
 const DEFAULT_URL = 'https://reelyactive.github.io/cormorant/';
-const HTTP_STATUS_OK = 200;
 
 
 // DOM elements
@@ -22,17 +21,22 @@ storyUrl.value = DEFAULT_URL;
 storyButton.addEventListener('click', () => {
   storyJson.textContent = '';
   if(storyUrl.value && (storyUrl.value.indexOf('http') === 0)) {
-    cormorant.retrieveStory(storyUrl.value, {}, (story, status) => {
+    cormorant.retrieveStory(storyUrl.value, {},
+                            (story, isRetrievedFromMemory) => {
       storyJson.textContent = JSON.stringify(story, null, 2);
-      storyStatus.textContent = status;
-      if(status === HTTP_STATUS_OK) {
-        storyStatus.setAttribute('class', 'text-success');
-      }
-      else if(status === undefined) {
-        storyStatus.textContent = 'n/a (cached)';
-        storyStatus.setAttribute('class', 'text-dark');
+
+      if(story) {
+        if(isRetrievedFromMemory) {
+          storyStatus.textContent = 'Retrieved from memory';
+          storyStatus.setAttribute('class', 'text-dark');
+        }
+        else {
+          storyStatus.textContent = 'Fetched';
+          storyStatus.setAttribute('class', 'text-success');
+        }
       }
       else {
+        storyStatus.textContent = 'Fetch error';
         storyStatus.setAttribute('class', 'text-danger');
       }
     });
