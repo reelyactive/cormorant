@@ -87,7 +87,7 @@ let cormorant = (function() {
 
         if(options.isStoryToBeRetrieved && deviceAssociations.url) {
           isStoryBeingRetrieved = true;
-          retrieveStory(deviceAssociations.url, (story, status) => {
+          retrieveStory(deviceAssociations.url, options, (story, status) => {
             return callback(deviceAssociations, story, status);
           });
         }
