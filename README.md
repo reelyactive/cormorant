@@ -43,11 +43,11 @@ Supported functions
 let url = 'https://reelyactive.github.io/cormorant/';
 let options = { isStoryToBeRefetched: false };
 
-cormorant.retrieveStory(url, options, (story, status) => {
+cormorant.retrieveStory(url, options, (story, isRetrievedFromMemory) => {
   // story = Object (if successfully retrieved)
   //       = null (otherwise)
-  // status = Number (HTTP response status code)
-  //        = undefined (if story retrieved from memory)
+  // isRetrievedFromMemory = true (if story retrieved from memory)
+  //                       = false (otherwise)
 });
 ```
 
@@ -61,13 +61,13 @@ let deviceSignature = 'bada55beac04/3';
 let options = { isStoryToBeRetrieved: false };
 
 cormorant.retrieveAssociations(url, deviceSignature, options,
-                               (deviceAssociations, story, status) => {
+                        (deviceAssociations, story, isRetrievedFromMemory) => {
   // deviceAssociations = Object (if successfully retrieved)
   //                    = null (otherwise)
   // story = Object (if successfully retrieved)
   //       = null (otherwise)
-  // status = Number (HTTP response status code)
-  //        = undefined (if story retrieved from memory)
+  // isRetrievedFromMemory = true (if story retrieved from memory)
+  //                       = false (otherwise)
 });
 ```
 
