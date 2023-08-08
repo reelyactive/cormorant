@@ -123,7 +123,7 @@ let cormorant = (function() {
 
     if(digitalTwins.has(deviceSignature))  {
       // TODO: update digital twin timestamp, refresh if necessary?
-      return callback(digitalTwins.get(deviceSignature));
+      return callback(digitalTwins.get(deviceSignature), true);
     }
 
     if(!associations.has(deviceSignature) &&
@@ -135,13 +135,13 @@ let cormorant = (function() {
         retrieveStory(device.url, {}, (story) => {
           updateDigitalTwin(deviceSignature, story);
           // TODO: device.statid.uri
-          return callback(digitalTwins.get(deviceSignature));
+          return callback(digitalTwins.get(deviceSignature), false);
         });
       }
       else if(device.statid && device.statid.uri) {
         retrieveStory(device.statid.uri, {}, (story) => {
           updateDigitalTwin(deviceSignature, story);
-          return callback(digitalTwins.get(deviceSignature));
+          return callback(digitalTwins.get(deviceSignature), false);
         });
       }
     }
