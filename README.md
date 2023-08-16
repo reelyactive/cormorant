@@ -3,6 +3,8 @@ cormorant.js
 
 __cormorant__ fetches digital twins in the form of JSON-LD & Schema.org from any given URL.
 
+![Overview of cormorant.js](https://reelyactive.github.io/cormorant/images/overview.png)
+
 __cormorant__ is lightweight client-side JavaScript that runs in the browser.  See a live demo using the code in this repository at: [reelyactive.github.io/cormorant](https://reelyactive.github.io/cormorant)
 
 
