@@ -126,9 +126,13 @@ let cormorant = (function() {
       return callback(digitalTwins.get(deviceSignature), true);
     }
 
-    if(!associations.has(deviceSignature) &&
-       options.associationsServerUrl) {
-      // TODO: Fetch associations first
+    if(!associations.has(deviceSignature) && options.associationsServerUrl) {
+      retrieveAssociations(options.associationsServerUrl, deviceSignature,
+                           { isStoryToBeRetrieved: true },
+                           (deviceAssociations, story) => {
+        updateDigitalTwin(deviceSignature, story);
+        return callback(digitalTwins.get(deviceSignature), false);
+      });
     }
     else if(device) {
       if(device.url) {
