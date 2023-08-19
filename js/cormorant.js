@@ -68,7 +68,7 @@ let cormorant = (function() {
     retrieve(url, 'application/json', (data) => {
       let deviceAssociations = null;
       let isStoryBeingRetrieved = false;
-      let isJsonData = (typeof data === 'object');
+      let isJsonData = (data !== null) && (typeof data === 'object');
 
       if(isJsonData) {
         let returnedDeviceId = null;
