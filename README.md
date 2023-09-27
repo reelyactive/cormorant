@@ -3,6 +3,8 @@ cormorant.js
 
 __cormorant__ fetches digital twins in the form of JSON-LD & Schema.org from any given URL.
 
+![Overview of cormorant.js](https://reelyactive.github.io/cormorant/images/overview.png)
+
 __cormorant__ is lightweight client-side JavaScript that runs in the browser.  See a live demo using the code in this repository at: [reelyactive.github.io/cormorant](https://reelyactive.github.io/cormorant)
 
 
@@ -73,6 +75,24 @@ cormorant.retrieveAssociations(url, deviceSignature, options,
 
 Set `isStoryToBeRetrieved: true` to automatically attempt to retrieve the story, provided a uri is included among the associations.
 
+### retrieveDigitalTwin
+
+```javascript
+let deviceSignature = 'bada55beac04/3';
+let device = beaver.devices.get(deviceSignature); // See beaver.js
+let options = { associationsServerUrl: "http://pareto.local" };
+
+cormorant.retrieveDigitalTwin(deviceSignature, device, options,
+                              (digitalTwin, isRetrievedFromMemory) => {
+  // digitalTwin = Object (if successfully retrieved)
+  //             = null (otherwise)
+  // isRetrievedFromMemory = true (if digitalTwin retrieved from memory)
+  //                       = false (otherwise)
+});
+```
+
+Omit the `associationsServerUrl` in the absence of an associations server (ex: [chickadee](https://github.com/reelyactive/chickadee)).
+
 
 Supported variables
 -------------------
@@ -81,6 +101,7 @@ Supported variables
 |:-------------------------|:-----|:-----------------------|
 | `cormorant.stories`      | Map  | URL as key             |
 | `cormorant.associations` | Map  | deviceSignature as key |
+| `cormorant.digitalTwins` | Map  | deviceSignature as key |
 
 
 ![cormorant logo](https://reelyactive.github.io/cormorant/images/cormorant-bubble.png)
@@ -114,8 +135,6 @@ Security
 --------
 
 Consult our [security policy](SECURITY.md) for best practices using this open source software and to report vulnerabilities.
-
-[![Known Vulnerabilities](https://snyk.io/test/github/reelyactive/cormorant/badge.svg)](https://snyk.io/test/github/reelyactive/cormorant)
 
 
 License
