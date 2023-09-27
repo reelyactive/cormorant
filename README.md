@@ -75,6 +75,24 @@ cormorant.retrieveAssociations(url, deviceSignature, options,
 
 Set `isStoryToBeRetrieved: true` to automatically attempt to retrieve the story, provided a uri is included among the associations.
 
+### retrieveDigitalTwin
+
+```javascript
+let deviceSignature = 'bada55beac04/3';
+let device = beaver.devices.get(deviceSignature); // See beaver.js
+let options = { associationsServerUrl: "http://pareto.local" };
+
+cormorant.retrieveDigitalTwin(deviceSignature, device, options,
+                              (digitalTwin, isRetrievedFromMemory) => {
+  // digitalTwin = Object (if successfully retrieved)
+  //             = null (otherwise)
+  // isRetrievedFromMemory = true (if digitalTwin retrieved from memory)
+  //                       = false (otherwise)
+});
+```
+
+Omit the `associationsServerUrl` in the absence of an associations server (ex: [chickadee](https://github.com/reelyactive/chickadee)).
+
 
 Supported variables
 -------------------
@@ -83,6 +101,7 @@ Supported variables
 |:-------------------------|:-----|:-----------------------|
 | `cormorant.stories`      | Map  | URL as key             |
 | `cormorant.associations` | Map  | deviceSignature as key |
+| `cormorant.digitalTwins` | Map  | deviceSignature as key |
 
 
 ![cormorant logo](https://reelyactive.github.io/cormorant/images/cormorant-bubble.png)
