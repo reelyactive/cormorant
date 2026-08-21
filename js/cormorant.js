@@ -1,5 +1,5 @@
 /**
- * Copyright reelyActive 2016-2023
+ * Copyright reelyActive 2016-2026
  * We believe in an open Internet of Things
  */
 
@@ -106,7 +106,8 @@ let cormorant = (function() {
       return callback(stories.get(storyUrl), true);
     }
 
-    retrieve(storyUrl, 'application/json, text/plain', (data) => {
+    retrieve(storyUrl, 'application/ld+json, application/json, text/plain',
+             (data) => {
       if(!data) { return callback(null, false); }
 
       let isJsonData = (typeof data === 'object');
